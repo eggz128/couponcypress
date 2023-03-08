@@ -20,7 +20,7 @@ describe('template spec', () => {
     cy.get('#coupon_code').clear('e');
     cy.get('#coupon_code').type('edgewords');
     cy.get('.coupon > .button').click();
-    cy.get('.cart-subtotal > td > .woocommerce-Price-amount > bdi').should('have.text', '£32.00');
+    cy.get('.cart-subtotal > td > .woocommerce-Price-amount > bdi').should('have.text', '£32.00'); //Implicit assertions (should()) are fine for when no calculation needed
     cy.get('.cart-discount > td > .woocommerce-Price-amount').should('have.text', '£4.80');
     cy.get('label > .woocommerce-Price-amount > bdi').should('have.text', '£3.95');
     cy.get('strong > .woocommerce-Price-amount > bdi').should('have.text', '£31.15');
