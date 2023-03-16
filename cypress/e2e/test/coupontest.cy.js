@@ -3,6 +3,12 @@ describe('A suite', function () {
         cy.visit('https://www.edgewordstraining.co.uk/demo-site/');
         cy.contains('Dismiss').click();
     });
+    afterEach(function () {
+        cy.get('.remove').click();
+        cy.contains('.button','Return to shop').click(); 
+        cy.contains('Home').click();
+    });
+    //Orders 2 caps, uses drop down to navigate to cart,  applies edgewords coupon, asserts on coupon discount amount
     it('Checks the coupon', function () { //CANNOT use async/await with Cypress. cy commands are async (effects happen later) but are enqued for sequential execution.
         //You cannot capture elements/text like so
         let body = cy.get('body')
