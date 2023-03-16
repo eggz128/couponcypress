@@ -20,13 +20,14 @@ describe('A suite', function () {
             cy.log(text);// Appears in Cypress log
         });
 
-        /*
-        * Arrange
-        */
+
         {   //Native keypress events check - spoiler Cypress doesn't. Check the dev console for key down/up events
             cy.get('input[placeholder="Search products…"]').first().type('{shift}cap{shift}').wait(1000).clear();
             //notice the chaining in above - we can wait after typing, then ater that clear.
         }
+        /*
+        * Arrange
+        */
         cy.contains('label', 'Search for:').siblings('[type=search]').type('cap{enter}');
 
         cy.contains('button', 'Add to cart').click();
@@ -36,14 +37,15 @@ describe('A suite', function () {
         //cy.get('#site-header-cart').trigger('mouseover') //No effect - drop down is not JS driven - it is css :hover driven. Potentially lots of discovery time to find this out.
         cy.get('.widget_shopping_cart').invoke('css', 'left', '0'); //ALTER THE PAGE CSS to move the drop down onscreen (from -999em to 0)
         cy.get('#site-header-cart').contains('View cart').click(); //Chained to ensure failiure if drop down is off screen
-        //ALternative drop down fix - force the "click" - users cant click -19000ish pixels left off screen. But Cypress isn't doing "click"s
+        //Alternative drop down fix - force the "click" - users cant click -19000ish pixels left off screen. But Cypress isn't doing "click"s
         //cy.get('#site-header-cart').contains('View cart').click({force:true})
 
         /*
         * Act
         */
-        cy.get('[id^=quantity]').clear().type('2'); //More chaining
+        cy.get('[id^=quantity]').clear().type('2'); //More chaining - sets cap qty to 2
         cy.get('[name="update_cart"]').click();
+
         cy.get('#coupon_code').type('edgewords');
         cy.contains('Apply coupon').click();
 
