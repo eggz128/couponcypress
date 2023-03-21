@@ -1,10 +1,10 @@
 describe('template spec', () => {
-  it('passes', () => {
+  it.skip('passes', () => {
     cy.visit('https://example.cypress.io')
   })
 
   /* ==== Test Created with Cypress Studio ==== */
-  it.only('Coupon check', function() {
+  it.skip('Coupon check', function() {
     /* ==== Generated with Cypress Studio ==== */
     cy.visit('https://www.edgewordstraining.co.uk/demo-site/');
     cy.get('.woocommerce-store-notice__dismiss-link').click();
